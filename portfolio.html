@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Portfolio — Kaiser Web Design</title>
+  <meta name="description" content="Case studies from Kaiser Web Design" />
+  <style>
+    body{font-family:Inter,system-ui,Arial;background:#071023;color:#e6eef6;margin:0}
+    .wrap
+{max-width:900px;margin:28px auto;padding:18px}
+header{background:transparent;padding:12px 18px;margin-bottom:18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{display:flex;align-items:center;gap:10px;font-weight:700}
+    .logo svg{width:48px;height:48px}
+    nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0;align-items:center}
+    .cta{background:var(--accent);color:white;padding:10px 14px;border-radius:10px;font-weight:600;box-shadow:var(--shadow)}
+    .case{background:rgba(255,255,255,0.02);padding:18px;border-radius:12px;margin-bottom:16px}
+    img{width:100%;border-radius:8px;height:300px;object-fit:cover}
+    a{color:#06b6d4}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+       <div class="brand">
+        <!-- simple text logo; replace with <img src="logo.svg"> if you have one -->
+        <a class="logo" aria-label="Kaiser Web Design home">
+          <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+            <defs>
+              <linearGradient id="kwdGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#06b6d4"/>
+                <stop offset="100%" stop-color="#3b82f6"/>
+              </linearGradient>
+            </defs>
+            <rect x="6" y="6" width="108" height="108" rx="22" fill="url(#kwdGrad)"/>
+            <path d="M38 30h14v26l22-26h18L66 60l28 30H76L52 64v26H38z" fill="#071023"/>
+          </svg>
+          <span style="font-size:18px">Kaiser Web Design</span>
+        </a>
+      </div>
+
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="index.html#faq">FAQ</a></li>
+          <li><a href="index.html#contact" class="cta">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <article id="Peace Lutheran Church" class="case">
+      <h2>Peach Lutheran Church</h2>
+      <img src="https://source.unsplash.com/collection/190727/1200x800" alt="Peace Lutheran screenshot">
+      <p style="color:#94a3b8">A streamlined informational website with custom youtube pages and contact forms. Implemented google callendar to make events easy and simple for the client to update.</p>
+      <p><strong>Tech:</strong> Static site generator, Stripe, Mailchimp</p>
+    </article>
+
+  </div>
+</body>
+</html>
