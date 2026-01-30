@@ -304,7 +304,6 @@
       document.getElementById('projectNotes').textContent = proj.notes;
       document.getElementById('modalChallenge').textContent = proj.challenge;
       document.getElementById('modalLive').href = proj.live || '#';
-      document.getElementById('modalCase').onclick = () => { location.href = proj.case || '#'; };
 
       // highlights
       const hs = document.getElementById('modalHighlights');
@@ -391,4 +390,3 @@
   </script>
 </body>
 </html>
-
