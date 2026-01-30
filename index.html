@@ -21,7 +21,7 @@
     *{box-sizing:border-box}
     body{margin:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.45}
     a{color:inherit;text-decoration:none}
-    .container{max-width:var(--maxw);margin:10px auto;padding:15}
+    .container{max-width:var(--maxw);margin:0px auto;padding:5px}
 
     header{background:transparent;padding:12px 18px;margin-bottom:18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
     .brand{display:flex;align-items:center;gap:12px}
@@ -45,8 +45,7 @@
 
     /* Portfolio */
     .portfolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:18px}
-    .proj{background:var(--card);padding:12px;border-radius:10px;border:1px solid rgba(15,23,36,0.03);box-shadow:0 6px 18px rgba(15,23,36,0.04);margin-bottom: 5px;transition:box-shadow 0.25s ease, transform 0.25s ease}
-    .proj:hover{box-shadow:0 14px 40px rgba(6,182,212,0.25);transform:translateY(-4px)}
+    .proj{background:var(--card);padding:12px;border-radius:10px;border:1px solid rgba(15,23,36,0.03);box-shadow:0 6px 18px rgba(15,23,36,0.04)}
     .proj img{width:100%;height:160px;object-fit:cover;border-radius:8px}
 
     /* Contact */
@@ -78,17 +77,7 @@
        <div class="brand">
         <!-- simple text logo; replace with <img src="logo.svg"> if you have one -->
         <a class="logo" aria-label="Kaiser Web Design home">
-          <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
-            <defs>
-              <linearGradient id="kwdGrad" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#06b6d4"/>
-                <stop offset="100%" stop-color="#3b82f6"/>
-              </linearGradient>
-            </defs>
-            <rect x="6" y="6" width="108" height="108" rx="22" fill="url(#kwdGrad)"/>
-            <path d="M38 30h14v26l22-26h18L66 60l28 30H76L52 64v26H38z" fill="#f2f6ff"/>
-          </svg>
-          <span style="font-size:18px">Kaiser Web Design</span>
+            <img src="LongLogo.png" style="height: 70px">
         </a>
       </div>
 
@@ -121,7 +110,7 @@
           </div>
         </div>
 
-        <aside style="background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:18px;border-radius:12px">
+        <aside style="background: rgb(255, 255,255);padding:18px;border-radius:12px;box-shadow:var(--shadow)">
           <h3 style="margin:0 0 8px">Why work with us</h3>
           <p style="color:var(--muted);margin:0 0 12px">You’ll get clear timelines, straightforward pricing, and a site built to convert visitors into customers. We handle hosting setup, analytics, and optional training.</p>
           <ul style="color:var(--muted);margin:0 0 12px;padding-left:18px">
@@ -131,6 +120,7 @@
           </ul>
           <div style="display:flex;gap:8px">
             <a href="#services" class="cta">View services</a>
+            <a href="#pricing" style="padding:10px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);font-weight:600">See pricing</a>
           </div>
         </aside>
       </section>
@@ -184,8 +174,8 @@
         <div class="portfolio-grid">
           <article class="proj">
             <img src="https://source.unsplash.com/collection/190727/800x600" alt="Project screenshot 1">
-            <h4 style="margin:8px 0 4px">Peace Lutheran Church</h4>
-            <p style="color:var(--muted);margin:0 0 8px">Welcoming and Informational integration</p>
+            <h4 style="margin:8px 0 4px">Local Coffee Roasters</h4>
+            <p style="color:var(--muted);margin:0 0 8px">E‑commerce + local pickup integration.</p>
             <a href="portfolio.html#coffee">View case study →</a>
           </article>
         </div>
@@ -197,15 +187,15 @@
         <h2>Contact</h2>
         <p style="color:var(--muted);margin-top:6px">Tell me about your project and I’ll get back within 24–48 hours.</p>
 
-        <!-- Replace FORM_ID below with your Formspree id -->
-        <form action="https://formspree.io/f/FORM_ID" method="POST" aria-label="Contact Kaiser Web Design">
+        <!-- Contact form (AJAX submit, no redirect) -->
+        <form id="contactForm" aria-label="Contact Kaiser Web Design">
           <input type="text" name="name" placeholder="Your name" required>
           <input type="email" name="email" placeholder="Email address" required>
           <input type="text" name="company" placeholder="Company / website (optional)">
           <textarea name="message" rows="6" placeholder="Briefly describe your project" required></textarea>
-          <!-- Optional: redirect after submit -->
-          <input type="hidden" name="_subject" value="New inquiry from Kaiser Web Design site">
           <button type="submit">Send message</button>
+          <p id="formSuccess" style="display:none;margin-top:10px;color:#16a34a;font-weight:600;">✅ Thanks! Your message has been sent. I’ll be in touch soon.</p>
+          <p id="formError" style="display:none;margin-top:10px;color:#dc2626;font-weight:600;">❌ Something went wrong. Please try again later.</p>
         </form>
       </section>
 
@@ -243,6 +233,36 @@
       document.querySelectorAll('.a').forEach(a=>a.style.display='none');
       next.style.display = open ? 'none' : 'block';
     }));
+
+    // Contact form AJAX submit (prevents redirect)
+    const form = document.getElementById('contactForm');
+    const successMsg = document.getElementById('formSuccess');
+    const errorMsg = document.getElementById('formError');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      successMsg.style.display = 'none';
+      errorMsg.style.display = 'none';
+
+      const formData = new FormData(form);
+
+      try {
+        const res = await fetch('https://formspree.io/f/mzzjjwal', {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (res.ok) {
+          successMsg.style.display = 'block';
+          form.reset();
+        } else {
+          errorMsg.style.display = 'block';
+        }
+      } catch (err) {
+        errorMsg.style.display = 'block';
+      }
+    });
   </script>
 </body>
 </html>
