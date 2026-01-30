@@ -1,84 +1,351 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Kaiser Web Design — Websites that work</title>
-  <meta name="description" content="Kaiser Web Design builds clean, modern websites for small businesses and creators. Get a site that looks great and converts." />
+  <meta name="description"
+    content="Kaiser Web Design builds clean, modern websites for small businesses and creators. Get a site that looks great and converts." />
   <link rel="icon" type="images/png" href="Favicon.png">
   <style>
-    html{scroll-behavior:smooth}
-    :root{
-      --bg:#f8fafc; /* soft light background */
-      --card:#ffffff;
-      --muted:#475569;
-      --text:#0f1724;
-      --accent:#06b6d4;
-      --glass: rgba(15,23,36,0.04);
-      --radius:12px;
-      --maxw:1100px;
-      --shadow: 0 8px 28px rgba(15,23,36,0.06);
+    html {
+      scroll-behavior: smooth
     }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.45}
-    a{color:inherit;text-decoration:none}
-    .container{max-width:var(--maxw);margin:0px auto;padding:5px}
 
-    header{background:transparent;padding:12px 18px;margin-bottom:18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo{display:flex;align-items:center;gap:10px;font-weight:700}
-    .logo svg{width:48px;height:48px}
-    nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0;align-items:center}
-    .cta{background:var(--accent);color:white;padding:10px 14px;border-radius:10px;font-weight:600;box-shadow:var(--shadow)}
+    :root {
+      --bg: #f8fafc;
+      /* soft light background */
+      --card: #ffffff;
+      --muted: #475569;
+      --text: #0f1724;
+      --accent: #06b6d4;
+      --glass: rgba(15, 23, 36, 0.04);
+      --radius: 12px;
+      --maxw: 1100px;
+      --shadow: 0 8px 28px rgba(15, 23, 36, 0.06);
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.45
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none
+    }
+
+    .container {
+      max-width: var(--maxw);
+      margin: 0px auto;
+      padding: 5px
+    }
+
+    header {
+      background: transparent;
+      padding: 12px 18px;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700
+    }
+
+    .logo svg {
+      width: 48px;
+      height: 48px
+    }
+
+    nav ul {
+      display: flex;
+      gap: 18px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      align-items: center
+    }
+
+    .cta {
+      background: var(--accent);
+      color: white;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-weight: 600;
+      box-shadow: var(--shadow)
+    }
 
     /* Hero */
-    .hero{display:grid;grid-template-columns:1fr 420px;gap:32px;align-items:center;margin-top:12px}
-    .hero h1{font-size:40px;margin:0 0 12px;color:var(--text);line-height:1.08}
-    .hero p{color:var(--muted);margin:0 0 18px;font-size:16px}
-    .features{display:flex;gap:12px;flex-wrap:wrap}
-    .feature{background:linear-gradient(180deg,#f1f5f9,#fff);padding:10px;border-radius:8px;color:var(--text);box-shadow:0 6px 18px rgba(15,23,36,0.04);font-weight:600}
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 32px;
+      align-items: center;
+      margin-top: 12px
+    }
+
+    .hero h1 {
+      font-size: 40px;
+      margin: 0 0 12px;
+      color: var(--text);
+      line-height: 1.08
+    }
+
+    .hero p {
+      color: var(--muted);
+      margin: 0 0 18px;
+      font-size: 16px
+    }
+
+    .features {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap
+    }
+
+    .feature {
+      background: linear-gradient(180deg, #f1f5f9, #fff);
+      padding: 10px;
+      border-radius: 8px;
+      color: var(--text);
+      box-shadow: 0 6px 18px rgba(15, 23, 36, 0.04);
+      font-weight: 600
+    }
 
     /* Services */
-    .cards{display:flex;gap:18px;flex-wrap:wrap;margin-top:18px}
-    .card{background:var(--card);padding:20px;border-radius:var(--radius);flex:1;min-width:220px;box-shadow:var(--shadow);border:1px solid rgba(15,23,36,0.03);transition:box-shadow 0.25s ease, transform 0.25s ease}
-    .card:hover{box-shadow:0 14px 40px rgba(6,182,212,0.25);transform:translateY(-4px)}
-    .price{font-size:20px;font-weight:700;margin-top:10px;color:var(--text)}
+    .cards {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-top: 18px
+    }
+
+    .card {
+      background: var(--card);
+      padding: 20px;
+      border-radius: var(--radius);
+      flex: 1;
+      min-width: 220px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(15, 23, 36, 0.03);
+      transition: box-shadow 0.25s ease, transform 0.25s ease
+    }
+
+    .card:hover {
+      box-shadow: 0 14px 40px rgba(6, 182, 212, 0.25);
+      transform: translateY(-4px)
+    }
+
+    .price {
+      font-size: 20px;
+      font-weight: 700;
+      margin-top: 10px;
+      color: var(--text)
+    }
 
     /* Portfolio */
-    .portfolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:18px}
-    .proj{background:var(--card);padding:12px;border-radius:10px;border:1px solid rgba(15,23,36,0.03);box-shadow:0 6px 18px rgba(15,23,36,0.04)}
-    .proj img{width:100%;height:160px;object-fit:cover;border-radius:8px}
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 18px
+    }
+
+    .proj {
+      background: var(--card);
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(15, 23, 36, 0.03);
+      box-shadow: 0 6px 18px rgba(15, 23, 36, 0.04)
+    }
+
+    .proj img {
+      height: 160px;
+      object-fit: cover;
+      border-radius: 8px;
+      display: block;
+      margin: 0 auto 8px auto;
+    }
 
     /* Contact */
-    form{display:flex;flex-direction:column;gap:12px}
-    input, textarea{background:#fff;border:1px solid rgba(15,23,36,0.08);padding:12px;border-radius:8px;color:var(--text);box-shadow:inset 0 1px 0 rgba(255,255,255,0.5)}
-    input::placeholder, textarea::placeholder{color:#94a3b8}
-    button[type="submit"]{background:var(--accent);border:none;color:white;padding:12px;border-radius:10px;font-weight:700;cursor:pointer;box-shadow:0 6px 18px rgba(6,182,212,0.12)}
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px
+    }
+
+    input,
+    textarea {
+      background: #fff;
+      border: 1px solid rgba(15, 23, 36, 0.08);
+      padding: 12px;
+      border-radius: 8px;
+      color: var(--text);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5)
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: #94a3b8
+    }
+
+    button[type="submit"] {
+      background: var(--accent);
+      border: none;
+      color: white;
+      padding: 12px;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(6, 182, 212, 0.12)
+    }
 
     /* FAQ */
-    .faq{margin-top:18px}
-    .q{background:#fff;padding:12px;border-radius:10px;cursor:pointer;margin:6px;border:1px solid rgba(15,23,36,0.03)}
-    .a{display:none;padding:10px 12px;color:var(--muted);background:transparent}
+    .faq {
+      margin-top: 18px
+    }
 
-    footer{margin:28px 0;padding:18px;text-align:center;color:var(--muted);border-top:1px solid rgba(15,23,36,0.04);font-size:14px}
+    .q {
+      background: #fff;
+      padding: 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin: 6px;
+      border: 1px solid rgba(15, 23, 36, 0.03)
+    }
+
+    .a {
+      display: none;
+      padding: 10px 12px;
+      color: var(--muted);
+      background: transparent
+    }
+
+    footer {
+      margin: 28px 0;
+      padding: 18px;
+      text-align: center;
+      color: var(--muted);
+      border-top: 1px solid rgba(15, 23, 36, 0.04);
+      font-size: 14px
+    }
 
     /* Responsive */
-    @media(max-width:900px){
-      .hero{grid-template-columns:1fr}
-      nav ul{display:none}
-      .container{padding:18px;margin:18px}
-      .hero h1{font-size:28px}
-      .proj img{height:140px}
+    @media(max-width:900px) {
+      @media (max-width:900px) {
+        .container {
+          padding: 12px;
+          margin: 0 auto;
+        }
+
+        /* Header */
+        header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 12px;
+        }
+
+        nav ul {
+          display: none;
+          flex-direction: column;
+          width: 100%;
+          gap: 12px;
+        }
+
+        .nav-toggle {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          cursor: pointer;
+          font-weight: 600;
+        }
+
+        /* Hero section */
+        .hero {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+
+        .hero h1 {
+          font-size: 28px;
+          line-height: 1.2;
+        }
+
+        .hero aside {
+          width: 100%;
+          box-sizing: border-box;
+        }
+
+        /* Features & cards */
+        .features {
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .cards {
+          flex-direction: column;
+          gap: 12px;
+        }
+
+        .card {
+          min-width: 100%;
+        }
+
+        .portfolio-grid {
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
+
+        .proj img {
+          height: 180px;
+        }
+
+        /* Form & buttons */
+        form input,
+        form textarea,
+        form button {
+          width: 100%;
+        }
+
+        /* Footer */
+        footer div {
+          flex-direction: column;
+          gap: 6px;
+          text-align: center;
+        }
+      }
     }
   </style>
 </head>
+
 <body>
   <div class="container">
     <header>
-       <div class="brand">
+      <div class="brand">
         <!-- simple text logo; replace with <img src="logo.svg"> if you have one -->
         <a class="logo" aria-label="Kaiser Web Design home">
-            <img src="LongLogo.png" style="height: 70px">
+          <img src="LongLogo.png" style="height: 70px">
         </a>
       </div>
 
@@ -97,7 +364,8 @@
       <section class="hero" id="home">
         <div>
           <h1>We build websites that look modern — and actually bring you clients.</h1>
-          <p>At Kaiser Web Design we create fast, secure websites for small businesses and creators. Clear messaging, real conversions, and long-term support — no fluff.</p>
+          <p>At Kaiser Web Design we create fast, secure websites for small businesses and creators. Clear messaging,
+            real conversions, and long-term support — no fluff.</p>
           <div style="display:flex;gap:12px;align-items:center">
             <a href="#contact" class="cta">Get a free consult</a>
             <a href="portfolio.html" style="color:var(--muted);font-weight:600">See recent work →</a>
@@ -113,7 +381,8 @@
 
         <aside style="background: rgb(255, 255,255);padding:18px;border-radius:12px;box-shadow:var(--shadow)">
           <h3 style="margin:0 0 8px">Why work with us</h3>
-          <p style="color:var(--muted);margin:0 0 12px">You’ll get clear timelines, straightforward pricing, and a site built to convert visitors into customers. We handle hosting setup, analytics, and optional training.</p>
+          <p style="color:var(--muted);margin:0 0 12px">You’ll get clear timelines, straightforward pricing, and a site
+            built to convert visitors into customers. We handle hosting setup, analytics, and optional training.</p>
           <ul style="color:var(--muted);margin:0 0 12px;padding-left:18px">
             <li>Fast turnarounds</li>
             <li>Accessible & mobile-first</li>
@@ -128,7 +397,8 @@
       <!-- Services -->
       <section id="services">
         <h2 style="margin-top:30px">Services</h2>
-        <p style="color:var(--muted);margin-top:6px">Packages built for real businesses — pick a starting point and we’ll tailor it to your needs.</p>
+        <p style="color:var(--muted);margin-top:6px">Packages built for real businesses — pick a starting point and
+          we’ll tailor it to your needs.</p>
 
         <div class="cards">
           <div class="card">
@@ -163,7 +433,8 @@
         </div>
 
         <div style="margin-top:12px;color:var(--muted)">
-          <strong>Integrations:</strong> Stripe, PayPal, Mailchimp, Google Analytics, Google Business Profile, Zapier and more.
+          <strong>Integrations:</strong> Stripe, PayPal, Mailchimp, Google Analytics, Google Business Profile, Zapier
+          and more.
         </div>
       </section>
 
@@ -173,11 +444,14 @@
         <p style="color:var(--muted);margin-top:6px">Click any project to view the case study.</p>
         <div class="portfolio-grid">
           <article class="proj">
-            <img src="https://source.unsplash.com/collection/190727/800x600" alt="Project screenshot 1">
-            <h4 style="margin:8px 0 4px">Local Coffee Roasters</h4>
-            <p style="color:var(--muted);margin:0 0 8px">E‑commerce + local pickup integration.</p>
+            <img src="PeaceLutheran.jpg" alt="Project screenshot 1">
+            <a style="margin:8px 0 4px; font-size:x-large; font-weight:bold;"  href="https://peaceplainfield.org">Peace Lutheran Church</a>
+            <p style="color:var(--muted);margin:0 0 8px">Custom design with a responive layout</p>
+            <p style="color:var(--muted);margin:0 0 8px">Dynamic callender and Youtube integration optimized for
+              performace</p>
             <a href="portfolio.html#coffee">View case study →</a>
           </article>
+
         </div>
         <div style="margin-top:12px"><a href="portfolio.html" class="cta">See full portfolio</a></div>
       </section>
@@ -185,7 +459,8 @@
       <!-- Contact -->
       <section id="contact" style="margin-top:30px">
         <h2>Contact</h2>
-        <p style="color:var(--muted);margin-top:6px">Tell me about your project and I’ll get back within 24–48 hours.</p>
+        <p style="color:var(--muted);margin-top:6px">Tell me about your project and I’ll get back within 24–48 hours.
+        </p>
 
         <!-- Contact form (AJAX submit, no redirect) -->
         <form id="contactForm" aria-label="Contact Kaiser Web Design">
@@ -194,8 +469,10 @@
           <input type="text" name="company" placeholder="Company / website (optional)">
           <textarea name="message" rows="6" placeholder="Briefly describe your project" required></textarea>
           <button type="submit">Send message</button>
-          <p id="formSuccess" style="display:none;margin-top:10px;color:#16a34a;font-weight:600;">✅ Thanks! Your message has been sent. I’ll be in touch soon.</p>
-          <p id="formError" style="display:none;margin-top:10px;color:#dc2626;font-weight:600;">❌ Something went wrong. Please try again later.</p>
+          <p id="formSuccess" style="display:none;margin-top:10px;color:#16a34a;font-weight:600;">✅ Thanks! Your message
+            has been sent. I’ll be in touch soon.</p>
+          <p id="formError" style="display:none;margin-top:10px;color:#dc2626;font-weight:600;">❌ Something went wrong.
+            Please try again later.</p>
         </form>
       </section>
 
@@ -207,13 +484,15 @@
         <div class="q">Do you offer maintenance?</div>
         <div class="a">Yes. We offer monthly maintenance plans for updates, backups, and minor edits.</div>
         <div class="q">Will I be able to edit my site?</div>
-        <div class="a">Yes — CMS training is included on Business and Premium packages, or we can provide simple edit access for Starter packages.</div>
+        <div class="a">Yes — CMS training is included on Business and Premium packages, or we can provide simple edit
+          access for Starter packages.</div>
       </section>
 
     </main>
 
     <footer>
-      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:var(--maxw);margin:0 auto;padding:0 28px">
+      <div
+        style="display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:var(--maxw);margin:0 auto;padding:0 28px">
         <div style="text-align:left">Kaiser Web Design</div>
         <div style="text-align:center">© <span id="year"></span> Kaiser Web Design — All rights reserved</div>
         <div style="text-align:right"><a href="#contact" style="color:var(--muted)">Privacy</a></div>
@@ -226,11 +505,11 @@
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // FAQ accordion
-    document.querySelectorAll('.q').forEach(q=>q.addEventListener('click', ()=>{
+    document.querySelectorAll('.q').forEach(q => q.addEventListener('click', () => {
       const next = q.nextElementSibling;
-      if(!next) return;
+      if (!next) return;
       const open = next.style.display === 'block';
-      document.querySelectorAll('.a').forEach(a=>a.style.display='none');
+      document.querySelectorAll('.a').forEach(a => a.style.display = 'none');
       next.style.display = open ? 'none' : 'block';
     }));
 
@@ -265,6 +544,5 @@
     });
   </script>
 </body>
+
 </html>
-
-
