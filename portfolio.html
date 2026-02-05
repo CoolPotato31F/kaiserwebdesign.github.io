@@ -23,13 +23,25 @@
       box-sizing: border-box
     }
 
+    /* ADDED: make whole page a column so footer can stick to bottom */
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+
     body {
       margin: 0;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
       color: var(--text);
       background: var(--bg);
       -webkit-font-smoothing: antialiased;
-      line-height: 1.45
+      line-height: 1.45;
+
+      min-height: 100vh;
+
+      /* ADDED */
+      display: flex;
+      flex-direction: column;
     }
 
     a {
@@ -37,19 +49,39 @@
       text-decoration: none
     }
 
+    /* container stays centered, but is now a column and will expand */
     .container {
       max-width: var(--maxw);
       margin: 0 auto;
-      padding: 16px
+      padding: 5px;
+      width: 100%;
+
+      /* ADDED */
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* ADDED: the main content area that grows to push footer down */
+    .content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
     }
 
     /* Header (same look) */
     header {
+      background: transparent;
+      padding: 12px 18px;
+      margin-bottom: 18px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 12px 0;
-      gap: 12px
+      gap: 12px;
+    }
+
+    .logo img{
+      height:70px;
     }
 
     .brand {
@@ -371,7 +403,7 @@
       }
     }
 
-    /* Footer (same look) */
+    /* Footer (same look). It's no longer necessary to use fixed positioning. */
     footer {
       margin: 28px 0;
       padding: 18px;
@@ -385,6 +417,7 @@
     .muted {
       color: var(--muted)
     }
+    
   </style>
 </head>
 
@@ -393,14 +426,14 @@
     <!-- Header (same as original) -->
     <header>
       <div class="brand">
-        <a class="logo" href="index.html" aria-label="Kaiser Web Design home"><img src="LongLogo.png"
-            alt="Kaiser Web Design"></a>
+        <a class="logo" href="index.html" aria-label="Kaiser Web Design home">
+          <img src="LongLogo.png" style="height:70px">
+        </a>
       </div>
 
       <nav aria-label="Main navigation">
-        <button class="nav-toggle" onclick="toggleNav()" aria-expanded="false">☰ Menu</button>
-        <ul id="mainNav">
-          <li><a href="index.html">Home</a></li>
+        <ul>
+          <li><a href="index.html#home">Home</a></li>
           <li><a href="index.html#services">Services</a></li>
           <li><a href="portfolio.html" aria-current="page">Portfolio</a></li>
           <li><a href="index.html#faq">FAQ</a></li>
@@ -409,105 +442,108 @@
       </nav>
     </header>
 
-    <!-- Page hero -->
-    <div class="page-hero">
-      <div>
-        <h1>Portfolio — Selected case studies</h1>
-        <p class="muted">Detailed write-ups, screenshots, and outcomes from real client projects.</p>
-      </div>
-    </div>
-
-    <!-- Filters -->
-    <div class="filters" role="toolbar" aria-label="Filter projects">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="web">Websites</button>
-      <button class="filter-btn" data-filter="ecom">E-commerce</button>
-      <button class="filter-btn" data-filter="cms">CMS & Integrations</button>
-    </div>
-
-    <!-- Grid -->
-    <section aria-labelledby="projects-heading">
-      <h2 id="projects-heading" style="margin:0 0 8px">Projects</h2>
-      <div class="portfolio-grid" id="portfolioGrid">
-        <!-- Example: Peace Lutheran -->
-        <article class="proj" data-id="peace" data-tags="web,cms" role="article"
-          aria-label="Peace Lutheran Church project">
-          <div class="thumb" aria-hidden="false">
-            <img src="PeaceLutheranImages/1.jpg" alt="Peace Lutheran homepage screenshot">
-          </div>
-          <h3>Peace Lutheran Church</h3>
-          <p>Starter Package</p>
-          <div class="meta">
-            <span class="muted">Client project</span>
-            <span class="muted">•</span>
-            <span class="muted">Integration</span>
-          </div>
-          <div style="margin-top:auto;display:flex;gap:8px">
-            <button class="filter-btn" onclick="openProject('peace')">View details</button>
-            <a class="btn-ghost" href="https://peaceplainfield.org" target="_blank" rel="noopener">View live site →</a>
-          </div>
-        </article>
-
-        <!-- Add more projects as needed -->
-      </div>
-    </section>
-
-    <!-- Modal / Project detail -->
-    <div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-hidden="true">
-      <div class="modal" role="document" aria-labelledby="modalTitle">
-
-        <div class="left">
-          <div class="screens" id="screens">
-            <div class="screen-nav" aria-hidden="true">
-              <button id="prevScreen" title="Previous"><svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                  <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
-                    stroke-linejoin="round" />
-                </svg></button>
-              <button id="nextScreen" title="Next"><svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                  <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
-                    stroke-linejoin="round" />
-                </svg></button>
-            </div>
-            <img id="modalImage" src="" alt="">
-          </div>
-
-          <div style="margin-top:12px">
-            <strong>Screenshots</strong>
-            <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap" id="thumbRow"></div>
-          </div>
-
-          <div style="margin-top:14px">
-            <strong>Project notes</strong>
-            <p id="projectNotes" class="muted" style="margin-top:8px"></p>
-          </div>
+    <!-- ADDED: make the scrollable/main content area -->
+    <main class="content">
+      <!-- Page hero -->
+      <div class="page-hero">
+        <div>
+          <h1>Portfolio — Selected case studies</h1>
+          <p class="muted">Detailed write-ups, screenshots, and outcomes from real client projects.</p>
         </div>
-
-        <aside class="right">
-          <button class="close" aria-label="Close project" id="modalClose">&times;</button>
-          <h2 id="modalTitle">Project Title</h2>
-          <div class="lead" id="modalSubtitle">Short one-line description</div>
-
-          <div>
-            <strong>Highlights</strong>
-            <ul class="list" id="modalHighlights"></ul>
-          </div>
-
-          <div>
-            <strong>Integrations & Tech</strong>
-            <div class="tags" id="modalTags"></div>
-          </div>
-
-          <div style="margin-top:10px">
-            <strong>Challenge</strong>
-            <p class="muted" id="modalChallenge"></p>
-          </div>
-
-          <div class="cta-row">
-            <a id="modalLive" class="cta" href="#" target="_blank" rel="noopener">View live site</a>
-          </div>
-        </aside>
       </div>
-    </div>
+
+      <!-- Filters -->
+      <div class="filters" role="toolbar" aria-label="Filter projects">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="web">Websites</button>
+        <button class="filter-btn" data-filter="ecom">E-commerce</button>
+        <button class="filter-btn" data-filter="cms">CMS & Integrations</button>
+      </div>
+
+      <!-- Grid -->
+      <section aria-labelledby="projects-heading">
+        <h2 id="projects-heading" style="margin:0 0 8px">Projects</h2>
+        <div class="portfolio-grid" id="portfolioGrid">
+          <!-- Example: Peace Lutheran -->
+          <article class="proj" data-id="peace" data-tags="web,cms" role="article"
+            aria-label="Peace Lutheran Church project">
+            <div class="thumb" aria-hidden="false">
+              <img src="PeaceLutheranImages/1.jpg" alt="Peace Lutheran homepage screenshot">
+            </div>
+            <h3>Peace Lutheran Church</h3>
+            <p>Starter Package</p>
+            <div class="meta">
+              <span class="muted">Client project</span>
+              <span class="muted">•</span>
+              <span class="muted">Integration</span>
+            </div>
+            <div style="margin-top:auto;display:flex;gap:8px">
+              <button class="filter-btn" onclick="openProject('peace')">View details</button>
+              <a class="btn-ghost" href="https://peaceplainfield.org" target="_blank" rel="noopener">View live site →</a>
+            </div>
+          </article>
+
+          <!-- Add more projects as needed -->
+        </div>
+      </section>
+
+      <!-- Modal / Project detail -->
+      <div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="modal" role="document" aria-labelledby="modalTitle">
+
+          <div class="left">
+            <div class="screens" id="screens">
+              <div class="screen-nav" aria-hidden="true">
+                <button id="prevScreen" title="Previous"><svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                    <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg></button>
+                <button id="nextScreen" title="Next"><svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                    <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg></button>
+              </div>
+              <img id="modalImage" src="" alt="">
+            </div>
+
+            <div style="margin-top:12px">
+              <strong>Screenshots</strong>
+              <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap" id="thumbRow"></div>
+            </div>
+
+            <div style="margin-top:14px">
+              <strong>Project notes</strong>
+              <p id="projectNotes" class="muted" style="margin-top:8px"></p>
+            </div>
+          </div>
+
+          <aside class="right">
+            <button class="close" aria-label="Close project" id="modalClose">&times;</button>
+            <h2 id="modalTitle">Project Title</h2>
+            <div class="lead" id="modalSubtitle">Short one-line description</div>
+
+            <div>
+              <strong>Highlights</strong>
+              <ul class="list" id="modalHighlights"></ul>
+            </div>
+
+            <div>
+              <strong>Integrations & Tech</strong>
+              <div class="tags" id="modalTags"></div>
+            </div>
+
+            <div style="margin-top:10px">
+              <strong>Challenge</strong>
+              <p class="muted" id="modalChallenge"></p>
+            </div>
+
+            <div class="cta-row">
+              <a id="modalLive" class="cta" href="#" target="_blank" rel="noopener">View live site</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </main>
 
     <footer style="margin-top:28px">
       <div
@@ -681,4 +717,3 @@
 </body>
 
 </html>
-
