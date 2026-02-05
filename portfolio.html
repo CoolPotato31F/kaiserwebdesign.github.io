@@ -615,7 +615,6 @@
         proj.screenshots.forEach((src, i) => {
           const t = document.createElement('img');
           t.src = src;
-          console.log(src)
           t.alt = proj.title + ' screenshot ' + (i + 1);
           t.style.width = '80px'; t.style.height = '56px'; t.style.objectFit = 'contain'; t.style.borderRadius = '6px'; t.style.cursor = 'pointer';
           t.onclick = () => { showScreenshot(i); };
@@ -682,3 +681,4 @@
 </body>
 
 </html>
+
