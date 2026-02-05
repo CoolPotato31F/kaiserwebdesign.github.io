@@ -385,6 +385,38 @@
       cursor: pointer
     }
 
+form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px
+    }
+
+    input,
+    textarea {
+      background: #fff;
+      border: 1px solid rgba(15, 23, 36, 0.08);
+      padding: 12px;
+      border-radius: 8px;
+      color: var(--text);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5)
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: #94a3b8
+    }
+
+    button[type="submit"] {
+      background: var(--accent);
+      border: none;
+      color: white;
+      padding: 12px;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(6, 182, 212, 0.12)
+    }
+
     /* Responsive modal */
     @media(max-width:960px) {
       .modal {
@@ -485,6 +517,25 @@
 
           <!-- Add more projects as needed -->
         </div>
+      </section>
+
+      <section id="contact" style="margin-top:30px">
+        <h2>Contact</h2>
+        <p style="color:var(--muted);margin-top:6px">Tell me about your project and I’ll get back within 24–48 hours.
+        </p>
+
+        <!-- Contact form (AJAX submit, no redirect) -->
+        <form id="contactForm" aria-label="Contact Kaiser Web Design">
+          <input type="text" name="name" placeholder="Your name" required>
+          <input type="email" name="email" placeholder="Email address" required>
+          <input type="text" name="company" placeholder="Company / website (optional)">
+          <textarea name="message" rows="6" placeholder="Briefly describe your project" required></textarea>
+          <button type="submit">Send message</button>
+          <p id="formSuccess" style="display:none;margin-top:10px;color:#16a34a;font-weight:600;">✅ Thanks! Your message
+            has been sent. I’ll be in touch soon.</p>
+          <p id="formError" style="display:none;margin-top:10px;color:#dc2626;font-weight:600;">❌ Something went wrong.
+            Please try again later.</p>
+        </form>
       </section>
 
       <!-- Modal / Project detail -->
@@ -713,6 +764,34 @@
 
     // start with 'all' filter
     filterGrid('all');
+    const form = document.getElementById('contactForm');
+    const successMsg = document.getElementById('formSuccess');
+    const errorMsg = document.getElementById('formError');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      successMsg.style.display = 'none';
+      errorMsg.style.display = 'none';
+
+      const formData = new FormData(form);
+
+      try {
+        const res = await fetch('https://formspree.io/f/mzzjjwal', {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (res.ok) {
+          successMsg.style.display = 'block';
+          form.reset();
+        } else {
+          errorMsg.style.display = 'block';
+        }
+      } catch (err) {
+        errorMsg.style.display = 'block';
+      }
+    });
   </script>
 </body>
 
