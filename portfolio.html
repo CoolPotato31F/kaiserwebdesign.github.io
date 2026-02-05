@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -7,111 +8,393 @@
   <meta name="description" content="Portfolio — Kaiser Web Design: case studies, screenshots, and project details." />
   <link rel="icon" type="images/png" href="Favicon.png">
   <style>
-    :root{
-      --bg:#f8fafc;
-      --card:#ffffff;
-      --muted:#475569;
-      --text:#0f1724;
-      --accent:#06b6d4;
-      --radius:12px;
-      --maxw:1100px;
-      --shadow: 0 8px 28px rgba(15,23,36,0.06);
+    :root {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --muted: #475569;
+      --text: #0f1724;
+      --accent: #06b6d4;
+      --radius: 12px;
+      --maxw: 1100px;
+      --shadow: 0 8px 28px rgba(15, 23, 36, 0.06);
     }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.45}
-    a{color:inherit;text-decoration:none}
-    .container{max-width:var(--maxw);margin:0 auto;padding:16px}
+
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.45
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none
+    }
+
+    .container {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 16px
+    }
 
     /* Header (same look) */
-    header{display:flex;align-items:center;justify-content:space-between;padding:12px 0;gap:12px}
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo img{height:56px}
-    nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0;align-items:center}
-    .cta{background:var(--accent);color:white;padding:10px 14px;border-radius:10px;font-weight:600;box-shadow:var(--shadow)}
-
-    /* Mobile nav toggle */
-    .nav-toggle{display:none;background:transparent;border:0;font-weight:700;cursor:pointer}
-    @media(max-width:900px){nav ul{display:none}.nav-toggle{display:inline-flex}}
-
-    /* Page header / hero */
-    .page-hero{display:flex;align-items:center;justify-content:space-between;gap:18px;margin:18px 0}
-    .page-hero h1{font-size:28px;margin:0}
-    .page-hero p{color:var(--muted);margin:6px 0 0}
-
-    /* Filters row */
-    .filters{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
-    .filter-btn{background:transparent;border:1px solid rgba(15,23,36,0.06);padding:8px 10px;border-radius:10px;cursor:pointer}
-    .filter-btn.active{background:var(--accent);color:white;border-color:transparent;box-shadow:var(--shadow)}
-
-    /* Grid */
-    .portfolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:6px}
-    .proj{background:var(--card);padding:12px;border-radius:12px;border:1px solid rgba(15,23,36,0.03);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px}
-    .proj .thumb{width:100%;height:160px;border-radius:10px;background:#eee;display:flex;align-items:center;justify-content:center;overflow:hidden}
-    .proj .thumb img{max-width:100%;max-height:100%;object-fit:cover;display:block;margin:0 auto}
-    .proj h3{margin:6px 0 0;font-size:18px}
-    .proj p{margin:6px 0 8px;color:var(--muted);font-size:14px}
-    .proj .meta{display:flex;gap:8px;flex-wrap:wrap;color:var(--muted);font-size:13px}
-
-    /* Modal */
-    .modal-backdrop{position:fixed;inset:0;background:rgba(2,6,23,0.5);display:none;align-items:center;justify-content:center;padding:20px;z-index:1000}
-    .modal{background:var(--card);width:100%;max-width:960px;border-radius:12px;box-shadow:0 30px 80px rgba(2,6,23,0.45);overflow:hidden;display:grid;grid-template-columns:1fr 360px;gap:0}
-    .modal .left{padding:12px}
-    .modal .right{padding:18px;background:linear-gradient(180deg, rgba(6,182,212,0.03), transparent)}
-    .modal .close{
-      position:relative;
-      margin-left:90%;
-      background:transparent;
-      border:0;
-      font-size:22px;
-      font-weight:700;
-      cursor:pointer;
-      color:var(--muted);
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      gap: 12px
     }
 
-.modal .close:hover{
-  color:var(--text);
-}
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px
+    }
 
-.modal-header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  margin-bottom:10px;
-}    .screens img{width:100%;height:360px;object-fit:contain;border-radius:8px;display:block}
-    .screen-nav{position:absolute;left:8px;right:8px;top:50%;transform:translateY(-50%);display:flex;justify-content:space-between;pointer-events:none}
-    .screen-nav button{pointer-events:auto;background:rgba(255,255,255,0.9);border-radius:10px;border:0;padding:8px;cursor:pointer;box-shadow:var(--shadow)}
+    .logo img {
+      height: 56px
+    }
+
+    nav ul {
+      display: flex;
+      gap: 18px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      align-items: center
+    }
+
+    .cta {
+      background: var(--accent);
+      color: white;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-weight: 600;
+      box-shadow: var(--shadow)
+    }
+
+    /* Mobile nav toggle */
+    .nav-toggle {
+      display: none;
+      background: transparent;
+      border: 0;
+      font-weight: 700;
+      cursor: pointer
+    }
+
+    @media(max-width:900px) {
+      nav ul {
+        display: none
+      }
+
+      .nav-toggle {
+        display: inline-flex
+      }
+    }
+
+    /* Page header / hero */
+    .page-hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin: 18px 0
+    }
+
+    .page-hero h1 {
+      font-size: 28px;
+      margin: 0
+    }
+
+    .page-hero p {
+      color: var(--muted);
+      margin: 6px 0 0
+    }
+
+    /* Filters row */
+    .filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 12px 0
+    }
+
+    .filter-btn {
+      background: transparent;
+      border: 1px solid rgba(15, 23, 36, 0.06);
+      padding: 8px 10px;
+      border-radius: 10px;
+      cursor: pointer
+    }
+
+    .filter-btn.active {
+      background: var(--accent);
+      color: white;
+      border-color: transparent;
+      box-shadow: var(--shadow)
+    }
+
+    /* Grid */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      margin-top: 6px
+    }
+
+    .proj {
+      background: var(--card);
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(15, 23, 36, 0.03);
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 8px
+    }
+
+    .proj .thumb {
+      width: 100%;
+      height: 160px;
+      border-radius: 10px;
+      background: #eee;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden
+    }
+
+    .proj .thumb img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto
+    }
+
+    .proj h3 {
+      margin: 6px 0 0;
+      font-size: 18px
+    }
+
+    .proj p {
+      margin: 6px 0 8px;
+      color: var(--muted);
+      font-size: 14px
+    }
+
+    .proj .meta {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 13px
+    }
+
+    /* Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 6, 23, 0.5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 1000
+    }
+
+    .modal {
+      background: var(--card);
+      width: 100%;
+      max-width: 960px;
+      border-radius: 12px;
+      box-shadow: 0 30px 80px rgba(2, 6, 23, 0.45);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 0
+    }
+
+    .modal .left {
+      padding: 12px
+    }
+
+    .modal .right {
+      padding: 18px;
+      background: linear-gradient(180deg, rgba(6, 182, 212, 0.03), transparent)
+    }
+
+    .modal .close {
+      position: relative;
+      margin-left: 90%;
+      background: transparent;
+      border: 0;
+      font-size: 22px;
+      font-weight: 700;
+      cursor: pointer;
+      color: var(--muted);
+    }
+
+    .modal .close:hover {
+      color: var(--text);
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .screens {
+      position: relative;
+      /* anchor for the nav */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: visible;
+    }
+
+    /* Image stays below the nav */
+    .screens img {
+      width: 100%;
+      height: 360px;
+      object-fit: contain;
+      border-radius: 8px;
+      display: block;
+      z-index: 1;
+    }
+
+    /* Nav sits on top of the image and only spans the .screens area */
+    .screen-nav {
+      position: absolute;
+      inset: 0;
+      /* top:0; right:0; bottom:0; left:0; */
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 8px;
+      /* controls horizontal padding from image edges */
+      pointer-events: none;
+      /* allow the container to be clickable except the buttons */
+      z-index: 2;
+    }
+
+    /* Style the buttons so they sit nicely on top of image edges */
+    .screen-nav button {
+      pointer-events: auto;
+      /* make buttons clickable */
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      border: 0;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+    }
 
     /* Modal right column */
-    .modal h2{margin:0 0 8px}
-    .modal .lead{color:var(--muted);margin-bottom:12px}
-    .modal .list{margin:12px 0;padding-left:18px;color:var(--muted)}
-    .modal .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-    .tag{background:rgba(6,182,212,0.08);color:var(--accent);padding:6px 8px;border-radius:8px;font-weight:600;font-size:13px}
+    .modal h2 {
+      margin: 0 0 8px
+    }
+
+    .modal .lead {
+      color: var(--muted);
+      margin-bottom: 12px
+    }
+
+    .modal .list {
+      margin: 12px 0;
+      padding-left: 18px;
+      color: var(--muted)
+    }
+
+    .modal .tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 10px
+    }
+
+    .tag {
+      background: rgba(6, 182, 212, 0.08);
+      color: var(--accent);
+      padding: 6px 8px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 13px
+    }
 
     /* CTA row */
-    .cta-row{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
-    .btn-ghost{background:transparent;border:1px solid rgba(15,23,36,0.08);padding:10px 12px;border-radius:8px;font-weight:700;cursor:pointer}
+    .cta-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 14px;
+      flex-wrap: wrap
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid rgba(15, 23, 36, 0.08);
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer
+    }
 
     /* Responsive modal */
-    @media(max-width:960px){
-      .modal{grid-template-columns:1fr;max-height:90vh;overflow:auto}
-      .screens img{height:260px}
+    @media(max-width:960px) {
+      .modal {
+        grid-template-columns: 1fr;
+        max-height: 90vh;
+        overflow: auto
+      }
+
+      .screens img {
+        height: 260px
+      }
+
+      .screen-nav button {
+        width: 36px;
+        height: 36px
+      }
     }
 
     /* Footer (same look) */
-    footer{margin:28px 0;padding:18px;text-align:center;color:var(--muted);border-top:1px solid rgba(15,23,36,0.04);font-size:14px}
+    footer {
+      margin: 28px 0;
+      padding: 18px;
+      text-align: center;
+      color: var(--muted);
+      border-top: 1px solid rgba(15, 23, 36, 0.04);
+      font-size: 14px
+    }
 
     /* small utilities */
-    .muted{color:var(--muted)}
+    .muted {
+      color: var(--muted)
+    }
   </style>
 </head>
+
 <body>
   <div class="container">
     <!-- Header (same as original) -->
     <header>
       <div class="brand">
-        <a class="logo" href="index.html" aria-label="Kaiser Web Design home"><img src="LongLogo.png" alt="Kaiser Web Design"></a>
+        <a class="logo" href="index.html" aria-label="Kaiser Web Design home"><img src="LongLogo.png"
+            alt="Kaiser Web Design"></a>
       </div>
 
       <nav aria-label="Main navigation">
@@ -147,7 +430,8 @@
       <h2 id="projects-heading" style="margin:0 0 8px">Projects</h2>
       <div class="portfolio-grid" id="portfolioGrid">
         <!-- Example: Peace Lutheran -->
-        <article class="proj" data-id="peace" data-tags="web,cms" role="article" aria-label="Peace Lutheran Church project">
+        <article class="proj" data-id="peace" data-tags="web,cms" role="article"
+          aria-label="Peace Lutheran Church project">
           <div class="thumb" aria-hidden="false">
             <img src="PeaceLutheranImages/1.jpg" alt="Peace Lutheran homepage screenshot">
           </div>
@@ -175,8 +459,14 @@
         <div class="left">
           <div class="screens" id="screens">
             <div class="screen-nav" aria-hidden="true">
-              <button id="prevScreen" title="Previous"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-              <button id="nextScreen" title="Next"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <button id="prevScreen" title="Previous"><svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg></button>
+              <button id="nextScreen" title="Next"><svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg></button>
             </div>
             <img id="modalImage" src="" alt="">
           </div>
@@ -193,7 +483,7 @@
         </div>
 
         <aside class="right">
-        <button class="close" aria-label="Close project" id="modalClose">&times;</button>
+          <button class="close" aria-label="Close project" id="modalClose">&times;</button>
           <h2 id="modalTitle">Project Title</h2>
           <div class="lead" id="modalSubtitle">Short one-line description</div>
 
@@ -220,7 +510,8 @@
     </div>
 
     <footer style="margin-top:28px">
-      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:var(--maxw);margin:0 auto;padding:0 10px">
+      <div
+        style="display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:var(--maxw);margin:0 auto;padding:0 10px">
         <div style="text-align:left">Kaiser Web Design</div>
         <div style="text-align:center">© <span id="year"></span> Kaiser Web Design — All rights reserved</div>
         <div style="text-align:right"><a href="index.html#contact" style="color:var(--muted)">Privacy</a></div>
@@ -233,7 +524,7 @@
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // Mobile nav toggle
-    function toggleNav(){
+    function toggleNav() {
       const nav = document.getElementById('mainNav');
       const btn = document.querySelector('.nav-toggle');
       if (!nav) return;
@@ -264,19 +555,19 @@
     };
 
     // Filter buttons
-    document.querySelectorAll('.filters .filter-btn').forEach(btn=>{
+    document.querySelectorAll('.filters .filter-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        document.querySelectorAll('.filters .filter-btn').forEach(b=>b.classList.remove('active'));
+        document.querySelectorAll('.filters .filter-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         const f = btn.dataset.filter;
         filterGrid(f);
       });
     });
 
-    function filterGrid(filter){
+    function filterGrid(filter) {
       const items = document.querySelectorAll('.portfolio-grid .proj');
-      items.forEach(it=>{
-        if (filter === 'all') { it.style.display='flex'; return; }
+      items.forEach(it => {
+        if (filter === 'all') { it.style.display = 'flex'; return; }
         const tags = it.dataset.tags ? it.dataset.tags.split(',') : [];
         it.style.display = tags.includes(filter) ? 'flex' : 'none';
       });
@@ -293,7 +584,7 @@
     let currentProject = null;
     let currentScreenshotIndex = 0;
 
-    function openProject(id){
+    function openProject(id) {
       const proj = projects[id];
       if (!proj) return;
       currentProject = proj;
@@ -308,25 +599,25 @@
       // highlights
       const hs = document.getElementById('modalHighlights');
       hs.innerHTML = '';
-      proj.highlights.forEach(h=>{ const li=document.createElement('li'); li.textContent=h; hs.appendChild(li); });
+      proj.highlights.forEach(h => { const li = document.createElement('li'); li.textContent = h; hs.appendChild(li); });
 
       // tags
       const tagsWrap = document.getElementById('modalTags');
       tagsWrap.innerHTML = '';
-      proj.tags.forEach(t=>{
+      proj.tags.forEach(t => {
         const s = document.createElement('span');
-        s.className='tag'; s.textContent = t; tagsWrap.appendChild(s);
+        s.className = 'tag'; s.textContent = t; tagsWrap.appendChild(s);
       });
 
       // screenshots
-      thumbRow.innerHTML='';
-      if (Array.isArray(proj.screenshots) && proj.screenshots.length){
+      thumbRow.innerHTML = '';
+      if (Array.isArray(proj.screenshots) && proj.screenshots.length) {
         proj.screenshots.forEach((src, i) => {
           const t = document.createElement('img');
           t.src = src;
           console.log(src)
-          t.alt = proj.title + ' screenshot ' + (i+1);
-          t.style.width='80px'; t.style.height='56px'; t.style.objectFit='contain'; t.style.borderRadius='6px'; t.style.cursor='pointer';
+          t.alt = proj.title + ' screenshot ' + (i + 1);
+          t.style.width = '80px'; t.style.height = '56px'; t.style.objectFit = 'contain'; t.style.borderRadius = '6px'; t.style.cursor = 'pointer';
           t.onclick = () => { showScreenshot(i); };
           thumbRow.appendChild(t);
         });
@@ -337,25 +628,25 @@
 
       // show modal
       modalBackdrop.style.display = 'flex';
-      modalBackdrop.setAttribute('aria-hidden','false');
-      document.body.style.overflow='hidden';
+      modalBackdrop.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
       // set focus to close for keyboard
       modalClose.focus();
     }
 
-    function closeModal(){
-      modalBackdrop.style.display='none';
-      modalBackdrop.setAttribute('aria-hidden','true');
-      document.body.style.overflow='';
+    function closeModal() {
+      modalBackdrop.style.display = 'none';
+      modalBackdrop.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
       currentProject = null;
     }
 
-    function showScreenshot(index){
+    function showScreenshot(index) {
       if (!currentProject) return;
       const imgs = currentProject.screenshots || [];
       currentScreenshotIndex = ((index % imgs.length) + imgs.length) % imgs.length;
       modalImage.src = imgs[currentScreenshotIndex] || '';
-      modalImage.alt = currentProject.title + ' screenshot ' + (currentScreenshotIndex+1);
+      modalImage.alt = currentProject.title + ' screenshot ' + (currentScreenshotIndex + 1);
     }
 
     prevScreen.addEventListener('click', () => { showScreenshot(currentScreenshotIndex - 1); });
@@ -366,8 +657,8 @@
       if (e.target === modalBackdrop) closeModal();
     });
 
-    document.addEventListener('keydown', (e)=>{
-      if (modalBackdrop.style.display === 'flex'){
+    document.addEventListener('keydown', (e) => {
+      if (modalBackdrop.style.display === 'flex') {
         if (e.key === 'Escape') closeModal();
         if (e.key === 'ArrowLeft') showScreenshot(currentScreenshotIndex - 1);
         if (e.key === 'ArrowRight') showScreenshot(currentScreenshotIndex + 1);
@@ -375,21 +666,19 @@
     });
 
     // wire openProject to buttons on grid (for progressive enhancement)
-    document.querySelectorAll('.proj [onclick]').forEach(b=>{
+    document.querySelectorAll('.proj [onclick]').forEach(b => {
       // already has inline onclick; ensure it works
     });
 
     // init: ensure all images centered (safety)
-    document.querySelectorAll('.proj .thumb img').forEach(img=>{
-      img.style.display='block';
-      img.style.margin='0 auto';
+    document.querySelectorAll('.proj .thumb img').forEach(img => {
+      img.style.display = 'block';
+      img.style.margin = '0 auto';
     });
 
     // start with 'all' filter
     filterGrid('all');
   </script>
 </body>
+
 </html>
-
-
-
