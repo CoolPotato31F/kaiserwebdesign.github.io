@@ -486,9 +486,9 @@
 
         <!-- Contact form (AJAX submit, no redirect) -->
         <form id="contactForm" aria-label="Contact Kaiser Web Design">
-          <input type="text" name="name" placeholder="Your name" required>
-          <input type="email" name="email" placeholder="Email address" required>
-          <input type="text" name="company" placeholder="Company / website (optional)">
+          <input type="text" name="name" placeholder="Your name" required autocomplete="name">
+          <input type="email" name="email" placeholder="Email address" required autocomplete="email">
+          <input type="text" name="company" placeholder="Company / website (optional)" autocomplete="organization">
           <textarea name="message" rows="6" placeholder="Briefly describe your project" required></textarea>
           <button type="submit">Send message</button>
           <p id="formSuccess" style="display:none;margin-top:10px;color:#16a34a;font-weight:600;">✅ Thanks! Your message
