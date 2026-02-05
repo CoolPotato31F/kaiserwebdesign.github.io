@@ -30,13 +30,24 @@
       box-sizing: border-box
     }
 
+    /* ADDED: ensure full height and allow flex layout for sticky footer */
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+
     body {
       margin: 0;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
       color: var(--text);
       background: var(--bg);
       -webkit-font-smoothing: antialiased;
-      line-height: 1.45
+      line-height: 1.45;
+
+      /* ADDED: make page a column so footer can be pushed to bottom */
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
     a {
@@ -47,7 +58,19 @@
     .container {
       max-width: var(--maxw);
       margin: 0px auto;
-      padding: 5px
+      padding: 5px;
+
+      /* ADDED: container becomes the column that spans full viewport */
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      width: 100%;
+    }
+
+    /* ADDED: main content grows to push the footer down */
+    main {
+      flex: 1;
+      display: block;
     }
 
     header {
@@ -253,87 +276,85 @@
 
     /* Responsive */
     @media(max-width:900px) {
-      @media (max-width:900px) {
-        .container {
-          padding: 12px;
-          margin: 0 auto;
-        }
+      .container {
+        padding: 12px;
+        margin: 0 auto;
+      }
 
-        /* Header */
-        header {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 12px;
-        }
+      /* Header */
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
 
-        nav ul {
-          display: none;
-          flex-direction: column;
-          width: 100%;
-          gap: 12px;
-        }
+      nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        gap: 12px;
+      }
 
-        .nav-toggle {
-          display: flex;
-          align-items: center;
-          gap: 6px;
-          cursor: pointer;
-          font-weight: 600;
-        }
+      .nav-toggle {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        cursor: pointer;
+        font-weight: 600;
+      }
 
-        /* Hero section */
-        .hero {
-          grid-template-columns: 1fr;
-          gap: 20px;
-        }
+      /* Hero section */
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
 
-        .hero h1 {
-          font-size: 28px;
-          line-height: 1.2;
-        }
+      .hero h1 {
+        font-size: 28px;
+        line-height: 1.2;
+      }
 
-        .hero aside {
-          width: 100%;
-          box-sizing: border-box;
-        }
+      .hero aside {
+        width: 100%;
+        box-sizing: border-box;
+      }
 
-        /* Features & cards */
-        .features {
-          flex-direction: column;
-          gap: 10px;
-        }
+      /* Features & cards */
+      .features {
+        flex-direction: column;
+        gap: 10px;
+      }
 
-        .cards {
-          flex-direction: column;
-          gap: 12px;
-        }
+      .cards {
+        flex-direction: column;
+        gap: 12px;
+      }
 
-        .card {
-          min-width: 100%;
-        }
+      .card {
+        min-width: 100%;
+      }
 
-        .portfolio-grid {
-          grid-template-columns: 1fr;
-          gap: 12px;
-        }
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
 
-        .proj img {
-          height: 180px;
-        }
+      .proj img {
+        height: 180px;
+      }
 
-        /* Form & buttons */
-        form input,
-        form textarea,
-        form button {
-          width: 100%;
-        }
+      /* Form & buttons */
+      form input,
+      form textarea,
+      form button {
+        width: 100%;
+      }
 
-        /* Footer */
-        footer div {
-          flex-direction: column;
-          gap: 6px;
-          text-align: center;
-        }
+      /* Footer */
+      footer div {
+        flex-direction: column;
+        gap: 6px;
+        text-align: center;
       }
     }
   </style>
@@ -374,7 +395,7 @@
           <div class="features" style="margin-top:18px">
             <div class="feature">Responsive design</div>
             <div class="feature">SEO & analytics</div>
-            <div class="feature">E‑commerce & payments</div>
+            <div class="feature">E-commerce & payments</div>
             <div class="feature">CMS & updates</div>
           </div>
         </div>
@@ -425,7 +446,7 @@
             <h3>Premium</h3>
             <div class="price">From $350+</div>
             <ul style="color:var(--muted);margin-top:8px;padding-left:18px">
-              <li>E‑commerce, subscriptions, or booking</li>
+              <li>E-commerce, subscriptions, or booking</li>
               <li>Priority support & maintenance</li>
               <li>Performance optimization</li>
             </ul>
@@ -546,5 +567,3 @@
 </body>
 
 </html>
-
-
