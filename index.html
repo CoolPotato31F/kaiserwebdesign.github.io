@@ -611,6 +611,27 @@
     gtag('js', new Date());
 
     gtag('config', 'G-GKXVQK4DVE');
+// ===== TRACK PORTFOLIO CLICKS =====
+
+// Track click on "See full portfolio" buttons
+document.querySelectorAll('a[href="/portfolio"]').forEach(link => {
+  link.addEventListener('click', () => {
+    gtag('event', 'portfolio_click', {
+      event_category: 'engagement',
+      event_label: 'Clicked portfolio link'
+    });
+  });
+});
+
+// Track clicks on portfolio projects
+document.querySelectorAll('.proj a').forEach(link => {
+  link.addEventListener('click', () => {
+    gtag('event', 'portfolio_project_click', {
+      event_category: 'engagement',
+      event_label: link.textContent
+    });
+  });
+});
 
   </script>
 
