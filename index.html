@@ -174,6 +174,19 @@
       font-weight: 600
     }
 
+    /* ===== FADE IN ON SCROLL ===== */
+.fade {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
     /* Services */
     .cards {
       display: flex;
@@ -401,7 +414,7 @@
 
     <main>
       <section class="hero" id="home">
-        <div>
+        <div class="fade">
           <h1>We build websites that look modern — and actually bring you clients.</h1>
           <p>At Kaiser Web Design we create fast, secure websites for small businesses and creators. Clear messaging,
             real conversions, and long-term support — no fluff.</p>
@@ -418,7 +431,7 @@
           </div>
         </div>
 
-        <aside style="background: rgb(255, 255,255);padding:18px;border-radius:12px;box-shadow:var(--shadow)">
+        <aside  class="fade" style="background: rgb(255, 255,255);padding:18px;border-radius:12px;box-shadow:var(--shadow)">
           <h3 style="margin:0 0 8px">Why work with us</h3>
           <p style="color:var(--muted);margin:0 0 12px">You’ll get clear timelines, straightforward pricing, and a site
             built to convert visitors into customers. We handle hosting setup, analytics, and optional training.</p>
@@ -439,7 +452,7 @@
         <p style="color:var(--muted);margin-top:6px">Packages built for real businesses — pick a starting point and
           we’ll tailor it to your needs.</p>
 
-        <div class="cards">
+        <div class="cards fade">
           <div class="card">
             <h3>Starter</h3>
             <div class="price">From $100-200</div>
@@ -479,7 +492,7 @@
       </section>
 
       <!-- Portfolio preview -->
-      <section id="portfolio" style="margin-top:30px">
+      <section id="portfolio" style="margin-top:30px" class="fade">
         <h2>Recent work</h2>
         <p style="color:var(--muted);margin-top:6px">Click any project to view the case study.</p>
         <div class="portfolio-grid">
@@ -497,14 +510,14 @@
       </section>
 
       <!-- Contact -->
-      <section id="contact" style="margin-top:30px">
+      <section id="contact" style="margin-top:30px"  class="fade">
         <h2>Contact</h2>
         
         <p style="color:var(--muted);margin-top:6px">Tell me about your project and I’ll get back within 24–48 hours.
         </p>
 
         <!-- Contact form (AJAX submit, no redirect) -->
-        <form id="contactForm" aria-label="Contact Kaiser Web Design">
+        <form id="contactForm" aria-label="Contact Kaiser Web Design" class="fade">
           <input type="text" name="name" placeholder="Your name" required autocomplete="name">
           <input type="email" name="email" placeholder="Email address" required autocomplete="email">
           <input type="text" name="company" placeholder="Company / website (optional)" autocomplete="organization">
@@ -529,7 +542,7 @@
       </section>
 
       <!-- FAQ -->
-      <section id="faq" class="faq">
+      <section id="faq" class="faq fade">
         <h2>FAQ</h2>
         <div class="q">How long does a project usually take?</div>
         <div class="a">Most small websites launch in 2–4 weeks depending on revisions and content readiness.</div>
@@ -646,6 +659,27 @@ document.querySelectorAll('.proj a').forEach(link => {
 });
 
   </script>
+<script>
+// ===== FADE IN WHEN SCROLLED INTO VIEW =====
+const faders = document.querySelectorAll('.fade');
+
+const appearOptions = {
+  threshold: 0.15
+};
+
+const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+
+    entry.target.classList.add('show');
+    observer.unobserve(entry.target);
+  });
+}, appearOptions);
+
+faders.forEach(fader => {
+  appearOnScroll.observe(fader);
+});
+</script>
 
 </body>
 
