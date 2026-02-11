@@ -804,6 +804,12 @@
     gtag('js', new Date());
 
     gtag('config', 'G-GKXVQK4DVE');
+    // Track portfolio page view specifically
+    gtag('event', 'portfolio_open', {
+      page_name: 'Portfolio Page',
+      page_location: window.location.href
+    });
+
   </script>
 </body>
 
