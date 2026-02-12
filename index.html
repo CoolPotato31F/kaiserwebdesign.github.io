@@ -643,15 +643,6 @@ document.querySelectorAll('a[href="/portfolio"]').forEach(link => {
   });
 });
 
-// Track clicks on portfolio projects
-document.querySelectorAll('.proj a').forEach(link => {
-  link.addEventListener('click', () => {
-    gtag('event', 'portfolio_project_click', {
-      event_category: 'engagement',
-      event_label: link.textContent
-    });
-  });
-});
 
   </script>
 <script>
